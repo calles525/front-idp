@@ -1,5 +1,5 @@
 import { Card, CardBody, CardTitle, CardSubtitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Loader from "../../layouts/loader/Loader";
 
