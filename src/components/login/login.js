@@ -10,48 +10,48 @@ const Login = () => {
     const [activate, setActivate] = useState(false);
     const [error, setError] = useState("");
     const navigate = useNavigate();
-console.log(op.conexion)
+    console.log(op.conexion)
     const handleLogin = async (e) => {
         e.preventDefault();
-        setActivate(true);
-        setError("");
-
+        setActivate(true);  // Indicating loading state
+        setError("");  // Resetting previous error message
+    
         try {
-            const response = await fetch(op.conexion+"/api/login/login", {
+            const response = await fetch(op.conexion + "/api/login/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    usuario,
+                    usuario,  // Ensure `usuario` and `contrasena` are correctly set
                     contrasena,
                 }),
             });
-
+    
+            // Check if the response is OK
             if (response.ok) {
                 const result = await response.json();
                 console.log(result.data[0].resultado);
-
+    
+                // Store login result in sessionStorage
                 sessionStorage.setItem('tokens', md5(result.data[0].resultado.usuario.login));
+    
+                // Set additional user data based on the 'nivel'
                 if (result.data[0].resultado.usuario.nivel.toString() === 'local') {
-
                     sessionStorage.setItem('nombreiglesia', result.data[0].resultado.iglesia.nombre);
                     sessionStorage.setItem('idiglesia', result.data[0].resultado.iglesia.idIglesia);
-                    sessionStorage.setItem('idusuario', result.data[0].resultado.usuario.idUsuario);
-                    sessionStorage.setItem('login', result.data[0].resultado.usuario.login);
-                    sessionStorage.setItem('nivel', result.data[0].resultado.usuario.nivel);
-
-                } else if (result.data[0].resultado.usuario.nivel.toString() === 'zonal'){
-
+                } else if (result.data[0].resultado.usuario.nivel.toString() === 'zonal') {
                     sessionStorage.setItem('nombrezona', result.data[0].resultado.zona.nombre);
                     sessionStorage.setItem('idzona', result.data[0].resultado.zona.idZona);
-                    sessionStorage.setItem('idusuario', result.data[0].resultado.usuario.idUsuario);
-                    sessionStorage.setItem('login', result.data[0].resultado.usuario.login);
-                    sessionStorage.setItem('nivel', result.data[0].resultado.usuario.nivel);
-
                 }
-                // Redirige al usuario a /starter
-                navigate("/starter");
+    
+                // Common data
+                sessionStorage.setItem('idusuario', result.data[0].resultado.usuario.idUsuario);
+                sessionStorage.setItem('login', result.data[0].resultado.usuario.login);
+                sessionStorage.setItem('nivel', result.data[0].resultado.usuario.nivel);
+    
+                // Redirect to starter page
+                navigate("/starter");  // Ensure navigate is correctly imported from React Router
             } else {
                 const errorMsg = await response.text();
                 setError(errorMsg || "Error en las credenciales");
@@ -60,9 +60,10 @@ console.log(op.conexion)
             console.error("Error en la solicitud:", error);
             setError("Error en la conexión al servidor");
         } finally {
-            setActivate(false);
+            setActivate(false);  // Reset loading state
         }
     };
+    
 
     return (
         <div>

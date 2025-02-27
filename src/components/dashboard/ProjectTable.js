@@ -45,11 +45,7 @@ const ProjectTables = () => {
       console.error("Error en la solicitud:", error);
     }
   };
-  useEffect(() => {
 
-
-    fetchData();
-  }, []);
 
   // Filtrar datos según el término de búsqueda
   const filteredData = data.filter((item) =>
@@ -159,6 +155,11 @@ const ProjectTables = () => {
     }
 
   };
+  useEffect(() => {
+
+
+    fetchData();
+  }, []);
   return (
     <div>
       <Loader active={activate} />
