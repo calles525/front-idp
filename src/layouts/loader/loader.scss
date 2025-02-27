@@ -1,0 +1,41 @@
+
+
+.fallback-spinner {
+  position: fixed; // Asegura que el spinner cubra toda la pantalla
+  top: 0;
+  left: 0;
+  height: 100vh; // Altura completa de la ventana
+  width: 100%; // Ancho completo de la ventana
+  background-color: rgba(255, 255, 255, 0.8); // Fondo semi-transparente
+  display: flex; // Usar flexbox para centrar el contenido
+  justify-content: center; // Centrar horizontalmente
+  align-items: center; // Centrar verticalmente
+  z-index: 9999; // Asegurarse de que esté por encima de otros elementos
+}
+
+.loading {
+  position: relative; // Hacer que el contenedor sea relativo
+  display: flex;
+  justify-content: center; // Centrar el spinner
+  align-items: center; // Centrar verticalmente
+}
+
+.loader-image {
+  position: absolute; // Posicionar la imagen de forma absoluta
+  top: 50%; // Centrar verticalmente
+  left: 50%; // Centrar horizontalmente
+  transform: translate(-50%, -50%); // Ajustar la posición para centrar
+  width: 100px; // Ajusta el tamaño de la imagen según sea necesario
+  height: auto; // Mantener la proporción de la imagen
+}
+
+/* Animación de rotación */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estilo para el contenido de la página */
+.content {
+  padding: 20px;
+}
