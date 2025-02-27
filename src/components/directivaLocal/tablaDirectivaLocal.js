@@ -1,4 +1,4 @@
-import { Card, CardBody, CardTitle, CardSubtitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import Loader from "../../layouts/loader/Loader";
@@ -12,7 +12,6 @@ const TablaDirectivaLocal = () => {
     const [itemsPerPage, setItemsPerPage] = useState(5);
     const [cargos, setCargos] = useState([]);
     const [mensage, setMensage] = useState('')
-    const [mensage2, setMensage2] = useState('')
 
     // Estado para el modal
     const [modalOpen, setModalOpen] = useState(false);
@@ -186,7 +185,7 @@ const TablaDirectivaLocal = () => {
         setModalOpen(false)
         fetchData()
         setMensage('')
-        setMensage2('')
+       
 
     };
 

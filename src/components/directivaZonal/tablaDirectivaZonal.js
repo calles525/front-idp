@@ -1,4 +1,4 @@
-import { Card, CardBody, CardTitle, CardSubtitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import Loader from "../../layouts/loader/Loader";
@@ -17,7 +17,6 @@ const TablaDirectivaZonal = () => {
     const [iglesias, setIglesias] = useState([]);
 
     const [mensage, setMensage] = useState('')
-    const [mensage2, setMensage2] = useState('')
 
     // Estado para el modal
     const [modalOpen, setModalOpen] = useState(false);
@@ -202,7 +201,7 @@ const TablaDirectivaZonal = () => {
         setModalOpen(false)
         fetchData()
         setMensage('')
-        setMensage2('')
+
         setOperacionPer(0)
 
     };

@@ -1,4 +1,4 @@
-import { Card, CardBody, CardTitle, CardSubtitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
+import { Card, CardBody, CardTitle, Table, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, Label, Row, Col } from "reactstrap";
 import { useState, useEffect } from "react";
 import moment from "moment";
 import Loader from "../../layouts/loader/Loader";
@@ -15,9 +15,8 @@ const TablaRegistrarIglesia = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [currentPage, setCurrentPage] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(5);
-    const [cargos, setCargos] = useState([]);
-    const [mensage, setMensage] = useState('')
-    const [mensage2, setMensage2] = useState('')
+   // const [cargos, setCargos] = useState([]);
+   // const [mensage, setMensage] = useState('')
     // Estado para el modal
     const [modalOpen, setModalOpen] = useState(false);
     const [operacion, setOperacion] = useState(0); // 1: Incluir, 2: Modificar, 3: Eliminar, 4: Consultar
@@ -60,7 +59,7 @@ const TablaRegistrarIglesia = () => {
             if (response.ok) {
                 const result = await response.json();
                 console.log("Datos obtenidos cargos:", result); // Asegúrate de que los datos sean correctos
-                setCargos(result);
+               // setCargos(result);
             } else {
                 console.error("Error al obtener los datos:", response.statusText);
             }
@@ -191,8 +190,8 @@ const TablaRegistrarIglesia = () => {
     const closeModal = () => {
         setModalOpen(false)
         fetchData()
-        setMensage('')
-        setMensage2('')
+     //   setMensage('')
+       
 
     };
 
@@ -205,9 +204,9 @@ const TablaRegistrarIglesia = () => {
                 if (parseInt(e.target.value) === parseInt(data[i].id_cargo) && parseInt(data[i].id_persona) !== parseInt(formData.id_persona)) {
 
                     console.log(parseInt(data[i].id_persona), parseInt(formData.id_persona))
-                    setMensage('este cargo no esta disponible')
+                   // setMensage('este cargo no esta disponible')
                 } else {
-                    setMensage('')
+                   // setMensage('')
                 }
             }
         }
